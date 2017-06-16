@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ejemplo Webpack</title>
+    <!--<script>
+      var name = this.name1;
+      console.log(name);
+    </script>-->
+  </head>
+  <body>
+    <script>
+      var name = <%-JSON.stringify(name)%>;    //Se declara para poder usar la variable en el componente (bundle)
+    </script>
+    <div id="container"></div>
+    
+    <script type="text/javascript" src="../bundles/index-bundle.js" charset="utf-8"></script>  
+  </body>
+</html>
