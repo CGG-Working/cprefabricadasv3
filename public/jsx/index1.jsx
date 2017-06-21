@@ -22,56 +22,62 @@ class IndexComponent extends React.Component{
         estado_a_cambiar = {
             StateName:event.target.name
         };
-        
-        //console.log("Lemon= "+lemon);
-        //var lemon = (this.state.estado == true) ? false : true;
         this.setState({
-            [estado_a_cambiar.StateName]: event.target.checked
+            [estado_a_cambiar.StateName]: event.target.checked,
+            value: event.target.value
         });
-        console.log("Se realizo un cambio"); 
-        this.setState({value: event.target.value});       
+         
     }
     cambiadordeurl(){//haga algo
-        console.log("Se realizo un cambio en el select tag y la nueva variable es: "+this.state.value); 
-        if(this.state.Elite == true && this.state.Familiar == true && this.state.Personal == true) {
-            console.log("Selecciono : Elite, Familiar y Personal");
-        }
-        if(this.state.Elite == true && this.state.Familiar == true) {
-            console.log("Selecciono : Elite y Familiar");
-        }
-        if(this.state.Elite == true && this.state.Personal == true) {
-            console.log("Selecciono : Elite y Personal");
-        }
-        if(this.state.Familiar == true && this.state.Personal == true) {
-            console.log("Selecciono : Familiar y Personal");
-        }
-        if(this.state.Elite == true) {
-            console.log("Selecciono : Elite");
-        }
-        if(this.state.Familiar == true) {
-            console.log("Selecciono : Familiar");
-        }
-        if(this.state.Personal == true) {
-            console.log("Selecciono : Personal");
-        }
         var conparse = JSON.parse(name);
-        TableCreator = conparse.map(function(item,i){
-            return  <div className="col-md-6" key={i}>  
-                        <img src={"../public/images/"+conparse[i].imageName+".jpg"} alt="Smiley face" height="200" width="200"/>                 
-                        <div>Categoria: {conparse[i].Categoria}</div>
-                        <div># habitaciones: {conparse[i].No_habitaciones}</div>
-                        <div># Baños: {conparse[i].No_baños}</div>
-                        <div># Pisos: {conparse[i].No_pisos}</div>
-                        <div>Tamaño (m): {conparse[i].Tamaño}</div>
-                    </div>
-        }.bind(this));
+        var estados_activos = [""];//vacia el array cada ves que se hace render
+        if(this.state.Todas == true){            
+            estados_activos.push("Todas");
+            TableCreator = conparse.map(function(item,i){
+                        return  <div className="col-md-6" key={i}>
+                                    <img src={"../public/images/"+conparse[i].imageName+".jpg"} alt="Smiley face" height="200" width="200"/>                 
+                                    <div>Categoria: {conparse[i].Categoria}</div>
+                                    <div># habitaciones: {conparse[i].No_habitaciones}</div>
+                                    <div># Baños: {conparse[i].No_baños}</div>
+                                    <div># Pisos: {conparse[i].No_pisos}</div>
+                                    <div>Tamaño (m): {conparse[i].Tamaño}</div>
+                                </div>
+            }.bind(this));
+        }else{            
+            if(this.state.Elite == true){
+                estados_activos.push("Elite");
+            }
+            if(this.state.Personal == true){
+                estados_activos.push("Personal");
+            }
+            if(this.state.Familiar == true){
+                estados_activos.push("Familiar");
+            }
+            console.log(estados_activos);
+            TableCreator = conparse.map(function(item,i){
+                for(var j = 0; j < estados_activos.length; j++){
+                    if(conparse[i].Categoria == estados_activos[j]){
+                        return  <div className="col-md-6" key={i}>
+                                    <img src={"../public/images/"+conparse[i].imageName+".jpg"} alt="Smiley face" height="200" width="200"/>                 
+                                    <div>Categoria: {conparse[i].Categoria}</div>
+                                    <div># habitaciones: {conparse[i].No_habitaciones}</div>
+                                    <div># Baños: {conparse[i].No_baños}</div>
+                                    <div># Pisos: {conparse[i].No_pisos}</div>
+                                    <div>Tamaño (m): {conparse[i].Tamaño}</div>
+                                </div>
+                    }
+                }
+            }.bind(this));
+        }
     }
+    renderizador(){}
     render() {
         if(this.state.value != ''){
             this.cambiadordeurl();
             if(TableCreator != ''){
                 return (
                     <div>
+                        <h3>Por favor selecciona alguna categoria</h3>
                         <form>
                             <input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/>
                             <input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/>
@@ -87,6 +93,7 @@ class IndexComponent extends React.Component{
         }else{
             return (
                 <div>
+                    <h3>Por favor selecciona alguna categoria</h3>
                     <form>
                         <input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/>
                         <input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/>
