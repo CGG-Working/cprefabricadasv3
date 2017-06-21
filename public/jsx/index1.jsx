@@ -1,74 +1,101 @@
 //var React = require('react');
 import React, {Component}  from 'react';
 import ReactDOM from 'react-dom';
+var TableCreator = '';
 class IndexComponent extends React.Component{
     constructor(props) {
         super(props);
         //declarador de estados
         this.state = {
-            value: ''
+            value: '',
+            Elite: false,
+            Familiar: false,
+            Personal: false,
+            Todas: false
         };
 
         //declarador de funciones
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(event) {//el cambio no lo hace de inmediato
-        this.setState({value: event.target.value});
-        console.log("Se realizo un cambio en el select tag y la nueva variable es: "+this.state.value);        
+        var estado_a_cambiar = {};
+        estado_a_cambiar = {
+            StateName:event.target.name
+        };
+        
+        //console.log("Lemon= "+lemon);
+        //var lemon = (this.state.estado == true) ? false : true;
+        this.setState({
+            [estado_a_cambiar.StateName]: event.target.checked
+        });
+        console.log("Se realizo un cambio"); 
+        this.setState({value: event.target.value});       
     }
-    cambiadordeurl(){
-        window.location.href = "http://localhost:8080/index1?FirstName="+this.state.value;
+    cambiadordeurl(){//haga algo
+        console.log("Se realizo un cambio en el select tag y la nueva variable es: "+this.state.value); 
+        if(this.state.Elite == true && this.state.Familiar == true && this.state.Personal == true) {
+            console.log("Selecciono : Elite, Familiar y Personal");
+        }
+        if(this.state.Elite == true && this.state.Familiar == true) {
+            console.log("Selecciono : Elite y Familiar");
+        }
+        if(this.state.Elite == true && this.state.Personal == true) {
+            console.log("Selecciono : Elite y Personal");
+        }
+        if(this.state.Familiar == true && this.state.Personal == true) {
+            console.log("Selecciono : Familiar y Personal");
+        }
+        if(this.state.Elite == true) {
+            console.log("Selecciono : Elite");
+        }
+        if(this.state.Familiar == true) {
+            console.log("Selecciono : Familiar");
+        }
+        if(this.state.Personal == true) {
+            console.log("Selecciono : Personal");
+        }
+        var conparse = JSON.parse(name);
+        TableCreator = conparse.map(function(item,i){
+            return  <div className="col-md-6" key={i}>  
+                        <img src={"../public/images/"+conparse[i].imageName+".jpg"} alt="Smiley face" height="200" width="200"/>                 
+                        <div>Categoria: {conparse[i].Categoria}</div>
+                        <div># habitaciones: {conparse[i].No_habitaciones}</div>
+                        <div># Baños: {conparse[i].No_baños}</div>
+                        <div># Pisos: {conparse[i].No_pisos}</div>
+                        <div>Tamaño (m): {conparse[i].Tamaño}</div>
+                    </div>
+        }.bind(this));
     }
     render() {
         if(this.state.value != ''){
             this.cambiadordeurl();
-        }        
-        //var str = "The ran in SPAIN stays manly in the plan";
-        if(name.match(/[^a-zA-Z0-9 /s]+/)){
-            console.log("Encontro simbolo(s) index1");
-            var conparse = JSON.parse(name);
-            var TableCreator = conparse.map(function(item,i){
-                return  <tr key={i}>
-                    <td>{conparse[i].house}</td>
-                    <td>{conparse[i].address}</td>
-                    <td>{conparse[i].email}</td>
-                    </tr>
-            }.bind(this));
-            return (
-                <div>
-                    <h1>this was built using react</h1>  
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value=" ">Eilja</option>
-                        <option value="buitrera">buitrera</option>
-                        <option value="montaña">montaña</option>
-                    </select>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                            <th>A</th>
-                            <th>B</th>
-                            <th>C</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            if(TableCreator != ''){
+                return (
+                    <div>
+                        <form>
+                            <input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/>
+                            <input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/>
+                            <input type="checkbox" checked={ this.state.Personal }  value={this.state.Personal} onChange={this.handleChange} name="Personal"/>Personal<br/>
+                            <input type="checkbox" checked={ this.state.Todas }  value={this.state.Todas} onChange={this.handleChange} name="Todas"/>Todas<br/>
+                        </form>
+                        <div  className="row">
                             {TableCreator}
-                        </tbody>
-                    </table>
-                </div>   
-            );
+                        </div>
+                    </div>
+                );
+            }
         }else{
-            console.log("no encontro simbolos index1");
             return (
                 <div>
-                    <h1>this was built using react</h1>
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value=" ">Eilja</option>
-                        <option value="buitrera">buitrera</option>
-                        <option value="montaña">montaña</option>
-                    </select>
+                    <form>
+                        <input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/>
+                        <input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/>
+                        <input type="checkbox" checked={ this.state.Personal }  value={this.state.Personal} onChange={this.handleChange} name="Personal"/>Personal<br/>
+                        <input type="checkbox" checked={ this.state.Todas }  value={this.state.Todas} onChange={this.handleChange} name="Todas"/>Todas<br/>
+                    </form>
                 </div>   
             );
-        }
+        }        
     }
 };
 ReactDOM.render(<IndexComponent/>, document.getElementById('container'));
