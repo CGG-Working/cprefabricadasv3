@@ -33,7 +33,6 @@ var routes_nav = new routes(router, connection);
 //connection.end(); //Si cierro la conexion aqui, ya no puede completar la busqueda cuando inicialize el server(NI tampoco se puede finalizar despues de inicializar el server)
 
 app.set('port', process.env.PORT || config.APP_PORT);//verifica que puerto que esta manejando el ambiente(eg:heroku) si existe uno lo usa de lo contrario usa el que le designo yo
-
 //This serves static files using express, dont use for production
 if(process.argv[2] == "dev"){
     app.use(express.static(path.join(__dirname)));//express.static sirve para permitir que node use nuestros archivos y normalmente se pone ('public') el nombre del archivo pero ya que esta ves es dinamico ponemos el path.join que hace eg: path.join('/foo', 'bar', 'baz/asdf', 'quux', '..')
