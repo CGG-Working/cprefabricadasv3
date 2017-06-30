@@ -1,0 +1,29 @@
+/*cabecera*/
+.initialImage{
+    width: 100%;
+}
+.marginTop{
+    margin-top: 70px;
+}
+
+/*ultimos proyectos*/
+.last_projects_height{
+}
+.img_carousel{
+    width: 100%;
+}
+.background{
+    background-color: #48B0FA !important;
+}
+.carousel .item {
+    height: 100%;
+}
+.image_carousel{
+    /*max-height: 200px; */   
+    max-height: 120px;
+    margin-top: 5px;
+    margin-bottom: 110px;
+}
+.inLine{
+    display: inline-block;
+}

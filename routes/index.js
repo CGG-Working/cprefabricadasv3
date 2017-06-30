@@ -13,7 +13,7 @@ function INDEX_ROUTER(router,connection) {
 
 INDEX_ROUTER.prototype.handleRoutes= function(router,connection) {
     
-    router.get('/index', function(request, response){
+    router.get('/', function(request, response){
         var primer_nombre = request.query.FirstName;
         if(primer_nombre){
             console.log(primer_nombre+" con request.query");

@@ -7,7 +7,7 @@ module.exports = {
   },
   context: __dirname,
   entry: {
-    app: ['./public/jsx/index.jsx'],
+    app: ['./public/jsx/class_view/index.js'],
     index: ['./public/jsx/index1.jsx'],
     index2: ['./public/jsx/index2.jsx']
   },
