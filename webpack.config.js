@@ -9,7 +9,8 @@ module.exports = {
   entry: {
     app: ['./public/jsx/class_view/index.js'],
     index: ['./public/jsx/index1.jsx'],
-    index2: ['./public/jsx/index2.jsx']
+    index2: ['./public/jsx/index2.jsx'],
+    house: ['./public/jsx/class_view/house.js']
   },
   output: {
     path: __dirname+'/bundles',

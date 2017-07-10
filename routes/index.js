@@ -53,7 +53,7 @@ INDEX_ROUTER.prototype.handleRoutes= function(router,connection) {
             response.render('index1', {name: "text"});
         }*/
     });
-    router.get('/index2', function(request, response){
+    router.get('/house', function(request, response){
         connection.query("SELECT * FROM tests2", function(error, rows, field){
             if(!!error){
                 console.log("Error in the query from another view: "+error);
@@ -61,7 +61,7 @@ INDEX_ROUTER.prototype.handleRoutes= function(router,connection) {
             } else{
                 Resoult = JSON.stringify(rows);
                 console.log("este es el resultado con json desde fourth con get "+Resoult);
-                response.render('index2', {name: Resoult});//el render se tiene que dejar aca por que funciona asycronicamente, si se pone mas abajo (fuera del if y else) no va a alcansar a cargar la variable y mandara a renderizar sin tenerla
+                response.render('house', {name: Resoult});//el render se tiene que dejar aca por que funciona asycronicamente, si se pone mas abajo (fuera del if y else) no va a alcansar a cargar la variable y mandara a renderizar sin tenerla
             }
         });
     });

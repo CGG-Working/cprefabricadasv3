@@ -5,3 +5,15 @@ body{
 .Body_Top_Limit{
     margin-top: 70px;
 }
+.Hover_Mouse{
+    cursor:pointer
+}
+.Text_Center{
+    text-align: center;
+}
+.showElement{
+    display: block;
+}
+.hideElement{
+    display: none;
+}
