@@ -1,0 +1,61 @@
+.footerHeight{
+    height: 150px;
+    overflow: hidden;
+}
+.footerHeight2{
+    height: 50%;
+}
+.footerImgGallery{
+    height: 100%;
+}
+.facebook{
+    background-color: #3b5998;    
+}
+.blur{
+    height: 100%;
+    width: 100%;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    transform: scale(1.1);
+}
+.instagram{    
+  color: #fff;
+  background: #d6249f;
+  /*background: radial-gradient(circle at 1% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); orginal*/
+  background: radial-gradient(circle at 1% 107%, #fdf497 0%, #fdf497 5%, #E95050 45%,#d6249f 60%,#3b5998 90%);
+  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+}
+.youtube{
+    /*background-color: hsl(3, 81.8%, 49.6%);*/
+    background-color: #E95050;
+}
+.contactenos{
+    background-color: #1CAAD9;
+}
+
+/*popup*/
+.popUpContainerCard{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background-color: #F9F9F9;
+    width: 90%;
+    height: auto;
+    border-radius: 15px;
+    padding: 10px;
+    overflow-y: auto;
+}
+input, textarea{
+    max-width: 100%;
+}
+.map{
+    border:0;
+    max-width: 100%;
+    max-height: 316px;
+}

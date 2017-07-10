@@ -1,14 +1,36 @@
+h1, h2, h3, h4{
+    margin: 0;
+    padding: 0;
+}
 /*cabecera*/
 .initialImage{
     width: 100%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
 }
-.marginTop{
+.marginTopPositionRelative{
+    position: relative;
     margin-top: 70px;
+}
+.textOverImage{
+    color: #FFFFFF;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+}
+.headerTitle{
+    color: #E99651;
+    font-size: 300%;
 }
 
 /*ultimos proyectos*/
-.last_projects_height{
-}
 .img_carousel{
     width: 100%;
 }
@@ -16,14 +38,164 @@
     background-color: #48B0FA !important;
 }
 .carousel .item {
-    height: 100%;
+    height: 200px;
 }
 .image_carousel{
-    /*max-height: 200px; */   
-    max-height: 120px;
-    margin-top: 5px;
-    margin-bottom: 110px;
+    max-height: 150px;
+    /*max-height: 120px;*/
+    border: 3px solid #DBDBDB;
+    border-radius: 100%;
 }
 .inLine{
     display: inline-block;
+}
+.carouselFirstElement{
+    padding-bottom: 10px;
+    padding-top: 10px;    
+}
+.carouselElements{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%); /* IE 9 */
+    -webkit-transform: translateY(-50%); /* Chrome, Safari, Opera */
+    width: 100%;
+}
+.carousel-indicators{
+    margin-bottom: 0;
+}
+.fullHeight{
+    height: 100%;
+}
+
+/*quienes somos*/
+.title{
+    padding-top: 20px;
+    color: #B7A360;
+}
+.quienesSomos{
+    max-height: 150px;
+    padding: 10px;
+}
+.whoWeAreContainerCard{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background-color: #F9F9F9;
+    width: 90%;
+    height: auto;
+    border-radius: 15px;
+    padding: 10px;
+    overflow-y: auto;
+}
+.justify{
+    text-align: justify;
+    text-justify: inter-word;
+}
+.popupText{
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 13px;
+}
+
+
+/*demostracion video*/
+.iframeContainer {
+    text-align: center;
+    width: 100%;
+}
+.iframeContainer iframe {
+    width: 90%;
+    max-width: 640px;
+    height: 360px;
+}
+.sectionContainer{
+    margin-top: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*sketchfab*/
+.style1{
+    font-weight: bold; color: #1CAAD9;
+}
+.style2{
+    font-weight: bold; color: #1CAAD9;
+}
+.style3{
+    font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;
+}
+.style4{
+    font-weight: bold; color: #1CAAD9;
+}
+.sketchfab-embed-wrapper{
+    text-align: center;
+    margin: auto;
+    width: 90%;
+}
+
+/*card*/
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 240px;
+}
+.card:hover {
+    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+}
+.cardInfoContainer {
+    padding: 2px 16px;
+}
+.cardImg{
+    width:100%;
+    max-width: 240px;
+}
+.cardInfoContainer p{
+    font-style: italic;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+/*services*/
+.servicesContainer{
+    padding: 0;
+}
+.cardPadding10px{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+/*ventajas*/
+.maxWidth800{
+    max-width: 800px;
+}
+.centerVertically{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.ventajaHeight{
+    height: 150px;
+}
+.ventajaImage{
+    max-height: 150px;
+    border: 3px solid #DBDBDB;
+    border-radius: 100%;
+}
+.hrAdvantage{
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+}
+.advantageContainer{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hra{
+    border-color: #BFBFBF;
 }
