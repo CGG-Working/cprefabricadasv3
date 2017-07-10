@@ -10,15 +10,15 @@
     margin: 0 !important;
 }
 .Nav_Part1{/*logo*/
-    height: 70px;
-    display: flex;
-    justify-content: center;
 }
 .Logo_Image{
-    height: 70%;
+    height: 70px;
+    margin: 0 auto;
+    /*width: 100%;
     max-width: 100%;
     max-height: 100%;
-    margin-top: 10px;
+    /* margin-top: 10px; 
+    padding: 5px;*/
 }
 .Nav_Part2{/*space*/
     height: 70px;
@@ -75,7 +75,18 @@
 .Menu_Remove_Icon{
     font-size: 25px;
     float: right;
-    margin-top: 24px;
-    margin-right: 24px;
+    /*margin-top: 24px;
+    margin-right: 24px;*/
+    padding: 20px;
     cursor: pointer;
+}
+.closeIconContainer{
+    width: 100%;
+    height: 70px;
+    background-color: #1CAAD9;
+}
+hr.style14 {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }

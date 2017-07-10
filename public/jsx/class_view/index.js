@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Index from '../components/index';
 import Head from '../components/head';
+import Footer from '.././components/footer';
 
 class IndexClass extends React.Component {
     componentWillMount()
@@ -10,11 +11,16 @@ class IndexClass extends React.Component {
     }
     constructor(props) {
         super(props);
-        this.state = {userId: ""};
+        this.state = {
+            userId: "",
+            footerPosition: '',
+            servicesPosition: '',
+            whoWeArePosition: ''
+        };
     }
 
     //callbacks events
-    handleChangeUserId(event){
+    handleChangeFooterPosition(event){
         //this.setState({userId: event.target.value});
     }
     handleChangePassword(event){
@@ -26,6 +32,7 @@ class IndexClass extends React.Component {
                 <div>
                 <Head />
                 <Index />
+                <Footer />
                 </div>
             );
     }

@@ -1,0 +1,53 @@
+/*Here  is config device mobile*/
+
+@media (max-width: 767px) {/*(max-width: 767px)*/
+  /*xs-phone*/
+    .carouselFirstElement,.carouselSecondElement{
+        margin-left: 20px;
+    }
+    .image_carousel{
+        margin-right: 15px;
+    }
+    .whoWeAreContainerCard,.popUpContainerCard{
+        height: 95% !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991) {/*(min-width: 768px) and (max-width: 991) */
+  /*sm-tablet*/
+    .carouselFirstElement,.carouselSecondElement{
+        margin-left: 20px;
+    }
+    .image_carousel{
+        margin-right: 15px;
+    }
+    .whoWeAreContainerCard,.popUpContainerCard{
+        height: 95% !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  /*md-desktop*/
+    .quienesSomos{
+        max-height: 230px;
+    }
+    .carouselFirstElement,.carouselSecondElement{
+        margin-left: 0px;
+    }
+    .image_carousel{
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+  /*lg-desktop-lg*/
+    .quienesSomos{
+        max-height: 230px;
+    }
+    .carouselFirstElement,.carouselSecondElement{
+        margin-left: 0px;
+    }
+    .image_carousel{
+        margin-right: 20px;
+    }
+}
