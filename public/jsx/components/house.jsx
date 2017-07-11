@@ -293,12 +293,15 @@ class HouseComponent extends React.Component{
                     <h3 className="Title">Repertorio de nuestras casas prefabricadas</h3>
                     <hr/>
                     <h3 className="Note_Correption">Categorias:</h3>
-                    <form>
-                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/></label>
-                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/></label>
-                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Personal }  value={this.state.Personal} onChange={this.handleChange} name="Personal"/>Personal<br/></label>
-                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Todas }  value={this.state.Todas} onChange={this.handleChange} name="Todas"/>Todas<br/></label>
-                    </form>
+                    <div>
+                        <form>
+                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/></label>
+                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/></label>
+                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Personal }  value={this.state.Personal} onChange={this.handleChange} name="Personal"/>Personal<br/></label>
+                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Todas }  value={this.state.Todas} onChange={this.handleChange} name="Todas"/>Todas<br/></label>
+                        </form>
+                    </div>
+                    
                     <hr/>
                     <div  className="row">
                         {TableCreator}

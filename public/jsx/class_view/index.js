@@ -13,10 +13,13 @@ class IndexClass extends React.Component {
         super(props);
         this.state = {
             userId: "",
-            footerPosition: '',
-            servicesPosition: '',
-            whoWeArePosition: ''
+            goToFooter: false
         };
+        this.goToFooter = this.goToFooter.bind(this);
+    }
+
+    goToFooter(){
+        this.setState({goToFooter:true});
     }
 
     //callbacks events

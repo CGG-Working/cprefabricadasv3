@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import House from '../components/house';
 import Head from '../components/head';
+import Footer from '.././components/footer';
 
 class HouseClass extends React.Component {
     componentWillMount()
@@ -26,6 +27,7 @@ class HouseClass extends React.Component {
                 <div>
                 <Head />
                 <House />
+                <Footer />
                 </div>
             );
     }

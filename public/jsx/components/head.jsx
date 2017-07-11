@@ -2,6 +2,9 @@
 import React, {Component}  from 'react';
 import ReactDOM from 'react-dom';
 
+//import contact us
+import ContactUsComponent from '.././components/contactUs';
+
 class HeadComponent extends React.Component{
     constructor(props) {
         super(props);
@@ -9,7 +12,8 @@ class HeadComponent extends React.Component{
         this.state = {
             value: '',
             Menu_State: 'Hide',
-            Menu_Width: 'Menu_Width_Close'
+            Menu_Width: 'Menu_Width_Close',
+            showContactUs: false
         };
 
         //declarador de funciones
@@ -17,6 +21,7 @@ class HeadComponent extends React.Component{
         this.goToHome = this.goToHome.bind(this);
         this.goToGallery = this.goToGallery.bind(this);
         this.goToContactUs = this.goToContactUs.bind(this);
+        this.closePopUp = this.closePopUp.bind(this);
     }
     Menu_Open_Close(event){
         console.log("Quieres abrir el menu");
@@ -41,10 +46,24 @@ class HeadComponent extends React.Component{
         window.location = "/house";//pendiente para la galeria de arturo
     }
     goToContactUs(event){
-        window.location.href = "/";
-        $('body').animate({ scrollTop: document.body.scrollHeight }, 0);
+        console.log("Quieres abrir el menu");
+        this.setState({
+            Menu_State: "Hide",
+            Menu_Width: 'Menu_Width_Close',
+            showContactUs:true            
+        });
+        //to enable scrolling when the popup is open
+        document.body.style.overflow = 'hidden';
+    }
+    closePopUp(value){
+        console.log("Quieres abrir el menu");
+        this.setState({
+            showContactUs:value            
+        });
     }
     render() {
+        let popup = (this.state.showContactUs == true)? true : false;
+
         let menuItems = (<div className="MarginTop20px">
             <a className="hover" onClick={(event) =>{this.goToHome(event)}}>Inicio</a>
             <hr className="style14"/>
@@ -56,6 +75,9 @@ class HeadComponent extends React.Component{
 
         return (
             <div>
+                {/*contactusPopUp*/}
+                <ContactUsComponent showPopUp={popup} closePopUp={this.closePopUp}/>
+
                 <div className="Nav Nav_Color">
                     <div  className="row">
                         <div className="col-xs-5 col-sm-5 col-md-4 col-lg-4 Nav_Part1">

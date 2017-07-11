@@ -56,6 +56,7 @@ class IndexComponent extends Component{
         this.getCarouselData = this.getCarouselData.bind(this);
         this.whoWeAreInteract = this.whoWeAreInteract.bind(this);
         this.closeWhoWeAre = this.closeWhoWeAre.bind(this);
+        this.SplitText = this.SplitText.bind(this);
     }
     
     componentWillMount() {
@@ -148,6 +149,26 @@ class IndexComponent extends Component{
         //to enable scrolling when the popup is open
         document.body.style.overflow = 'auto';
     }
+    SplitText(textToSplit){/*esta funcion genera el split en cada \n y debe estar generica*/
+        var result = textToSplit.split("\n").map(function(item,i) {
+        if(item != ''){/*El split o map suelta siempre como ultimo item, un item vacio, entonces si estoy en el ultimo elemento o elemento vacio, no imprimo el <br/>*/
+          return (
+            <span key={i}>
+              {item}
+              <br/>
+            </span>
+          )
+        }
+        else{
+          return (
+            <span key={i}>
+              {item}
+            </span>
+          )
+        }
+    })
+    return result;
+  }
     render() {
         let carouselData = (casas != null)? this.getCarouselData() : 'Error al optener datos';
         let overflowy = (this.state.ShowMision != false || this.state.ShowVision != false || this.state.ShowWhoWeAre != false)? 'overflowNone':'overflowAuto';
@@ -174,7 +195,7 @@ class IndexComponent extends Component{
                         <img className="cardImg img-responsive centerInsideGrid" src={"../public/images/"+this.state.imageToShow} alt="Avatar"/>                    
                     </div>
                     <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8 ">
-                        <p className="justify popupText">{this.state.textToShow}</p>
+                        <p className="justify popupText">{this.SplitText(this.state.textToShow)}</p>
                     </div>
                 </div>                
             </div>
@@ -214,7 +235,7 @@ class IndexComponent extends Component{
                         <img className="cardImg" src={"../public/images/"+item.img+".jpg"} alt="Avatar"/>
                         <div className="cardInfoContainer">
                             <h5><b>{item.titulo}</b></h5> 
-                            <p className="justify">{item.descripcion}</p> 
+                            <p className="justify">{this.SplitText(item.descripcion)}</p> 
                         </div>
                     </div>
                 </div>);
