@@ -23,6 +23,7 @@ class HouseComponent extends React.Component{
 
         //declarador de funciones
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeTodas = this.handleChangeTodas.bind(this);
         this.OpenGalery = this.OpenGalery.bind(this);
         this.ChangeGalery = this.ChangeGalery.bind(this);
         this.closeWhoWeAre = this.closeWhoWeAre.bind(this);
@@ -38,7 +39,28 @@ class HouseComponent extends React.Component{
             [estado_a_cambiar.StateName]: event.target.checked,
             value: event.target.value
         });
-         
+        if(this.state.Todas == false && this.state.Personal == false &&  this.state.Elite == false && this.state.Familiar == false){
+            this.props.footerPosition('goBottom');
+        }
+        else{
+            this.props.footerPosition('positionRelative');
+        }
+    }
+    handleChangeTodas(event) {//el cambio no lo hace de inmediato
+        var estado_a_cambiar = {};
+        estado_a_cambiar = {
+            StateName:event.target.name
+        };
+        this.setState({
+            [estado_a_cambiar.StateName]: event.target.checked,
+            value: event.target.value
+        });
+        if(event.target.checked == false && this.state.Personal == false &&  this.state.Elite == false && this.state.Familiar == false){
+            this.props.footerPosition('goBottom');
+        }
+        else{
+            this.props.footerPosition('positionRelative');
+        }
     }
     OpenGalery(Id, Type){
         for(let t = 0; t < casas_activas.length; t++){
@@ -185,7 +207,7 @@ class HouseComponent extends React.Component{
             }
     }
     Buscador(){//verifica que selecciono en la busqueda y procede a mostrar el resultado de dicha busqueda
-        estados_activos = [""];//vacia el array cada ves que se hace render
+        estados_activos = [];//vacia el array cada ves que se hace render
         if(this.state.Todas == true){   
             casas_activas=[];         
             estados_activos.push("Todas");
@@ -194,28 +216,28 @@ class HouseComponent extends React.Component{
                 if(conparse[i].sketchfab_embed != null){
                     Option3D = "Link";
                 }
-                        casas_activas.push(item);
-                        return  <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 House_Content" key={i}>
-                                    <div className="House_Inferior_Content">
-                                        <img className="House_Image img-responsive" src={"../public/images/"+conparse[i].imageName+".jpg"} alt="Smiley face"/>                 
-                                        <div  className="row Padding_Top">
-                                            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                                <div><span className="Sub_Title">Categoria</span>: {conparse[i].Categoria}</div>
-                                                <div><span className="Sub_Title"># Habitaciones</span>: {conparse[i].No_habitaciones}</div>
-                                                <div><span className="Sub_Title"># Baños</span>: {conparse[i].No_baños}</div>
-                                                <div><span className="Sub_Title"># Pisos</span>: {conparse[i].No_pisos}</div>
-                                                <div><span className="Sub_Title">Tamaño (m)</span>: {conparse[i].Tamaño}</div>
-                                            </div>
-                                            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 House_Info">
-                                                <div className="Sub_Title">OTRAS OPCIONES:</div>
-                                                <div className="Link" onClick={this.OpenGalery.bind(this, conparse[i].ID, "Gallery")} name="Galeria">Galeria de imagenes</div>
-                                                <div className={Option3D} onClick={this.OpenGalery.bind(this, conparse[i].ID, "3D")}>Modelo 3D</div>
-                                                <div className="LinkOff">Recorrido 360º</div>
-                                                <div className="LinkOff">Recorrido cardboard</div>
-                                            </div>
-                                        </div>
+                casas_activas.push(item);
+                return  (<div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 House_Content" key={i}>
+                            <div className="House_Inferior_Content">
+                                <img className="House_Image img-responsive" src={"../public/images/"+conparse[i].imageName+".jpg"} alt="Smiley face"/>                 
+                                <div  className="row Padding_Top">
+                                    <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div><span className="Sub_Title">Categoria</span>: {conparse[i].Categoria}</div>
+                                        <div><span className="Sub_Title"># Habitaciones</span>: {conparse[i].No_habitaciones}</div>
+                                        <div><span className="Sub_Title"># Baños</span>: {conparse[i].No_baños}</div>
+                                        <div><span className="Sub_Title"># Pisos</span>: {conparse[i].No_pisos}</div>
+                                        <div><span className="Sub_Title">Tamaño (m)</span>: {conparse[i].Tamaño}</div>
+                                    </div>
+                                    <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 House_Info">
+                                        <div className="Sub_Title">OTRAS OPCIONES:</div>
+                                        <div className="Link" onClick={this.OpenGalery.bind(this, conparse[i].ID, "Gallery")} name="Galeria">Galeria de imagenes</div>
+                                        <div className={Option3D} onClick={this.OpenGalery.bind(this, conparse[i].ID, "3D")}>Modelo 3D</div>
+                                        <div className="LinkOff">Recorrido 360º</div>
+                                        <div className="LinkOff">Recorrido cardboard</div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>)
             }.bind(this));
         }else{            
             if(this.state.Elite == true){
@@ -289,19 +311,16 @@ class HouseComponent extends React.Component{
         }
         return (
             <div>
-                <div className="Body_Top_Limit">
+                <div>
                     <h3 className="Title">Repertorio de nuestras casas prefabricadas</h3>
                     <hr/>
                     <h3 className="Note_Correption">Categorias:</h3>
-                    <div>
-                        <form>
-                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/></label>
-                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/></label>
-                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Personal }  value={this.state.Personal} onChange={this.handleChange} name="Personal"/>Personal<br/></label>
-                            <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Todas }  value={this.state.Todas} onChange={this.handleChange} name="Todas"/>Todas<br/></label>
-                        </form>
-                    </div>
-                    
+                    <form>
+                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Elite } value={this.state.Elite} onChange={this.handleChange}  name="Elite"/>Elite<br/></label>
+                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Familiar }  value={this.state.Familiar} onChange={this.handleChange} name="Familiar"/>Familiar<br/></label>
+                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Personal }  value={this.state.Personal} onChange={this.handleChange} name="Personal"/>Personal<br/></label>
+                        <label className="Hover_Mouse House_Menu"><input type="checkbox" checked={ this.state.Todas }  value={this.state.Todas} onChange={this.handleChangeTodas} name="Todas"/>Todas<br/></label>
+                    </form>
                     <hr/>
                     <div  className="row">
                         {TableCreator}

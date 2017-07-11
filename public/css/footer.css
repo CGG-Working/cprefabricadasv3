@@ -59,3 +59,7 @@ input, textarea{
     max-width: 100%;
     max-height: 316px;
 }
+.goBottom{
+    position: absolute;
+    bottom: 0;
+}

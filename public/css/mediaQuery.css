@@ -11,6 +11,9 @@
     .whoWeAreContainerCard,.popUpContainerCard{
         height: 95% !important;
     }
+    .goBottom{
+        position: relative !important;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991) {/*(min-width: 768px) and (max-width: 991) */
@@ -23,6 +26,9 @@
     }
     .whoWeAreContainerCard,.popUpContainerCard{
         height: 95% !important;
+    }
+    .goBottom{
+        position: relative !important;
     }
 }
 

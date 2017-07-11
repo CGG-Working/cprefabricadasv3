@@ -11,7 +11,11 @@ class HouseClass extends React.Component {
     }
     constructor(props) {
         super(props);
-        this.state = {userId: ""};
+        this.state = {
+            userId: "",
+            footerPosition: "positionRelative"
+        };
+        this.setFooterPosition = this.setFooterPosition.bind(this);
     }
 
     //callbacks events
@@ -21,13 +25,20 @@ class HouseClass extends React.Component {
     handleChangePassword(event){
         //this.setState({Password: event.target.value});
     }
+    setFooterPosition(value){
+        this.setState({footerPosition:value});
+    }
     
     render() {
         return (
                 <div>
                 <Head />
-                <House />
-                <Footer />
+                <House 
+                    footerPosition={this.setFooterPosition}
+                />
+                <Footer 
+                    footerPosition={this.state.footerPosition}
+                />
                 </div>
             );
     }

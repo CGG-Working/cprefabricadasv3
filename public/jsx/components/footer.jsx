@@ -45,7 +45,7 @@ class FooterComponent extends Component{
                 {/*contactusPopUp*/}
                 <ContactUsComponent showPopUp={popup} closePopUp={this.closePopUp}/>
                 
-                <div className="container-fluid noPadding">
+                <div className={"container-fluid noPadding "+this.props.footerPosition}>
                     {/*footer*/}
                     <div className="col-xs-12 col-sm-3 col-md-3 col-lg-3 footerHeight noPadding hover" onClick={this.redirect.bind(this, 'gallery')}>
                         <img src={"../public/images/header.jpg"} className="img-responsive footerImgGallery blur" alt="Cinque Terre"/>
